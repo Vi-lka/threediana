@@ -23,6 +23,7 @@ import {
     OrbitControls,
     TransformControls,
     ContactShadows,
+    useHelper,
 } from '@react-three/drei'
 import { BlendMode } from 'lamina/types'
 import { BlendFunction } from 'postprocessing'
@@ -808,6 +809,18 @@ export default function CanvasMain() {
             }
         })
 
+        function ClippingPlane() {
+            const { gl, scene } = useThree()
+            const plane = new THREE.Plane(new THREE.Vector3(0, -1, 0), 0.5)
+            gl.clippingPlanes = [plane]
+            gl.localClippingEnabled = true
+
+            const planeHelper = new THREE.PlaneHelper(plane, 2, 0x000000)
+            scene.add(planeHelper)
+
+            return null
+        }
+
         return (
             <>
                 <Bounds
@@ -826,6 +839,7 @@ export default function CanvasMain() {
                             receiveShadow
                             castShadow
                         />
+                        {/* <ClippingPlane /> */}
                     </DreiCenter>
                 </Bounds>
 
