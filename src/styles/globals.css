@@ -2,26 +2,278 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: hsla(0, 0%, 0%, 0.8);
+  word-wrap: break-word;
+  font-kerning: normal;
+  -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  -webkit-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
+  font-variant-ligatures: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  text-decoration-skip-ink: auto;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #cbd5e0;
+  opacity: 0.5;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.statsThree0,
+.statsThree1,
+.statsThree2 {
+  width: fit-content;
+  left: auto !important;
+  right: 0 !important;
+  top: auto !important;
+}
+
+.statsThree0 {
+  bottom: 100px !important;
+}
+
+.statsThree1 {
+  bottom: 50px !important;
+}
+
+.statsThree2 {
+  bottom: 0px !important;
+}
+
+.hud-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px;
+}
+
+.editForm3DMainContainer {
+  width: 25%;
+  height: 100vh;
+  padding: 0.5rem 0;
+  background-color: rgb(250 250 250 / 1);
+  border-right-width: 2px;
+  border-color: rgb(243 244 246 / 1);
+  overflow: hidden;
+}
+
+.editForm3DSettings {
+  scrollbar-color: rgb(212 212 212) #222322;
+  scrollbar-width: thin;
+  user-select: none;
+  /* standard syntax */
+  -webkit-user-select: none;
+  /* webkit (safari, chrome) browsers */
+  -moz-user-select: none;
+  /* mozilla browsers */
+  -khtml-user-select: none;
+  /* webkit (konqueror) browsers */
+  -ms-user-select: none;
+  /* IE10+ */
+}
+
+.editForm3DSettings::-webkit-scrollbar {
+  width: 4px;
+}
+
+.editForm3DSettings::-webkit-scrollbar-track {
+  background-color: rgb(212 212 212);
+}
+
+.editForm3DSettings::-webkit-scrollbar-thumb {
+  background-color: #222322;
+  border-radius: 100px;
+}
+
+.editFormGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #3182ce;
+  padding-bottom: 25px;
+}
+
+.fileInputLabelmap {
+  font-size: 16px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.fileInputLabelmap:hover .fileInputLabelmapAddIcon,
+.fileInputLabelmap:focus .fileInputLabelmapAddIcon {
+  color: white;
+  background-color: #3182ce !important;
+  padding: 6px;
+  border-radius: 10px;
+  transition: 0.15s ease-in-out;
+}
+
+.fileInputImgmap {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+  margin-left: 5px;
+  -webkit-box-shadow: 0px 0px 6px 1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 0px 0px 6px 1px rgba(34, 60, 80, 0.2);
+  box-shadow: 0px 0px 6px 1px rgba(34, 60, 80, 0.2);
+  border: 1px solid rgba(32, 32, 32, 0.2);
+  cursor: pointer;
+}
+
+.InputLabelmap {
+  font-size: 16px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.InputDiv {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.Inputmap {
+  font-size: 14px;
+  color: #202020;
+  display: inline-block;
+  width: 20%;
+  min-width: 45px;
+  height: 30px;
+  vertical-align: middle;
+  border: none;
+  border-radius: 3px;
+  padding: 4px 5px;
+  background-color: #f0f0f0;
+}
+
+.annotation {
+  display: none;
+  background-color: rgb(15 23 42 / 0.8);
+  color: white;
+  padding: 0.375rem;
+  border-radius: 0.375rem;
+  width: max-content;
+  min-height: 30px;
+  min-width: 190px;
+  max-height: 240px;
+  max-width: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  pointer-events: all;
+  scrollbar-color: rgb(212 212 212) #222322;
+  scrollbar-width: thin;
+  /* user-select: none; standard syntax */
+  /* -webkit-user-select: none; webkit (safari, chrome) browsers */
+  /* -moz-user-select: none; mozilla browsers */
+  /* -khtml-user-select: none; webkit (konqueror) browsers */
+  /* -ms-user-select: none; IE10+ */
+}
+
+.annotation::-webkit-scrollbar {
+  width: 4px;
+}
+
+.annotation::-webkit-scrollbar-track {
+  background-color: rgb(212 212 212);
+}
+
+.annotation::-webkit-scrollbar-thumb {
+  background-color: #222322;
+  border-radius: 100px;
+}
+
+.delete_icon {
+  width: 10%;
+  /* max-width: 20px;
+  max-height: 50px;
+  min-width: 20px;
+  min-height: 40px; */
+  padding: 2px;
+  margin-right: auto;
+  margin-left: auto;
+  object-fit: contain;
+  transition: all ease-in-out 0.15s;
+}
+
+.visible {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.selected {
+  background-color: #4a5568 !important;
+  border-radius: 0.2rem;
+}
+
+.selected p:first-of-type {
+  color: #fff;
+}
+
+.annotationsSettingsHover {
+  background-color: #bfc8d3 !important;
+}
+
+#labelDiv {
+  font-size: 14px;
+}
+
+.measurementLabel {
+  font-size: 14px;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  padding: 4px 6px;
+  border-radius: 6px;
+}
+
+#SceneSettings .react-colorful {
+  width: auto;
+}
+
+.hexColorInput .react-colorful {
+  width: auto;
+}
+
+.hexColorInput input {
+  display: block;
+  box-sizing: border-box;
+  width: 90px;
+  margin: 10px auto;
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #eee;
+  outline: none;
+  font: inherit;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.hexColorInput input:focus {
+  border-color: #4298ef;
 }
